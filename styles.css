@@ -1,0 +1,253 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: left; /* Убираем центрирование */
+    background: url('images/dayback.jpg') no-repeat center center;
+    background-size: cover;
+    backdrop-filter: blur(10px);
+    transition: background 0.3s, color 0.3s;
+}
+
+header {
+    position: relative;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(1, 7, 79); 
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 20px;
+    margin: 20px;
+    overflow: hidden;
+    background: none; 
+}
+
+header::before  {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('images/head.jpg') no-repeat center center;
+    background-size: cover;
+    opacity: 0.7; 
+    z-index: -1; 
+    border-radius: 10px; 
+}
+
+header h1 {
+    background: linear-gradient(90deg, #ffe600, #ffffff); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+    text-align: center;
+}
+
+/* Темная тема */
+.dark-mode {
+    background: url('images/night.jpg') no-repeat center center;
+    background-size: cover;
+    color: white;
+}
+
+.dark-mode header {
+    background-color: transparent; 
+}
+
+.dark-mode header::before {
+    background: url('images/head.jpg') no-repeat center center; 
+    background-size: cover;
+    opacity: 0.7; 
+}
+
+.dark-mode button {
+    background-color: #322078;
+}
+
+.dark-mode button:hover {
+    background-color: #322078;
+}
+
+/* Общие стили */
+.container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Блок с каруселью */
+.carousel-container {
+    flex: 0 1 300px; /* Ограничиваем ширину блока карусели */
+    margin-right: 20px;
+    box-sizing: border-box;
+}
+
+/* Карусель */
+.carousel {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    border-radius: 20px;
+    height: 300px;
+    margin-left: 0;
+    cursor: pointer;
+}
+.carousel::before,
+.carousel::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.carousel::before {
+    left: 0;
+}
+
+.carousel::after {
+    right: 0;
+}
+.carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+    transition: transform 0.3s ease-in-out;
+}
+
+.carousel img.active {
+    display: block;
+    opacity: 1;
+}
+
+.carousel img:hover {
+    transform: scale(1.1);
+}
+
+/* Точки карусели */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.carousel-dots .dot {
+    width: 8px;
+    height: 8px;
+    margin: 0 5px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.carousel-dots .dot.active {
+    background-color: #ff69b4;
+}
+
+/* Текст в карусели */
+.carousel-text {
+    text-align: left;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.carousel-text p {
+    margin: 5px 0;
+}
+.carousel-text p:last-of-type {
+    margin-top: 20px; 
+}
+
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+    background-color: #d14791;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .text-section {
+        padding-left: 0;
+        text-align: left; /* Отменяем центрирование */
+    }
+}
+
+@media (min-width: 1024px) {
+    body {
+        font-size: 18px;
+    }
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.3s, color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button:hover {
+    background-color: #d14791;
+}
+
+button img {
+    width: 24px; /* Размер иконки */
+    height: 24px; /* Размер иконки */
+    transition: transform 0.3s ease;
+}
+
+/* В темной теме можно изменить иконку */
+.dark-mode button img {
+    transform: rotate(180deg); /* Пример трансформации, если хочешь */
+}
+
+.text-section {
+    width: 100%; /* Сделаем блок текста гибким */
+    max-width: 700px; /* Ограничим ширину */
+    margin: 0 auto; /* Центрируем блок */
+}
+
+
+/* Для цитаты */
+blockquote {
+    font-style: italic;
+    font-size: 18px;
+    color: #555;
+    border-left: 5px solid #ff69b4;
+    padding-left: 15px;
+    margin-bottom: 20px;
+    text-align: left; /* выравнивание по левому краю */
+    margin-left: 0; /* Убираем отступ слева */
+    margin-right: 0; /* Убираем отступ справа */
+}
