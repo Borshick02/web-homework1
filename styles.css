@@ -1,38 +1,22 @@
 body {
     font-family: Arial, sans-serif;
-    text-align: left; 
     background: url('images/dayback.jpg') no-repeat center center;
     background-size: cover;
     backdrop-filter: blur(10px);
+    margin: 0;
+    overflow-x: hidden; 
     transition: background 0.3s, color 0.3s;
 }
 
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #e4a0c2;
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #d14791;
-}
 header {
     position: relative;
     height: 200px;
-    border-radius: 10px;
     margin: 20px;
     padding: 20px;
     overflow: hidden;
     background: url('images/head.jpg') no-repeat center center;
     background-size: cover;
+    border-radius: 10px;
     border: 2px solid #ffedf6;
 }
 
@@ -46,13 +30,8 @@ header::before, header::after {
     background-size: contain;
 }
 
-header::before {
-    left: 10px;
-}
-
-header::after {
-    right: 10px;
-}
+header::before { left: 10px; }
+header::after { right: 10px; }
 
 /* Темная тема */
 .dark-mode {
@@ -61,63 +40,30 @@ header::after {
     color: white;
 }
 
-.dark-mode header {
-    background: url('images/head.jpg') no-repeat center center;
-    background-size: cover;
-}
-
-.dark-mode button {
-    background-color: #322078;
-}
-
-.dark-mode button:hover {
-    background-color: #322078;
-}
-
-
 .container {
     display: flex;
     justify-content: space-between;
     max-width: 1400px;
     margin: auto;
     padding: 20px;
+    flex-wrap: wrap; /* Позволяет элементам перенести на новую строку при необходимости */
 }
 
-/* Блок с каруселью */
 .carousel-container {
-    flex: 0 1 300px; 
+    flex: 0 1 300px;
     margin-right: 20px;
     box-sizing: border-box;
 }
 
-/* Карусель */
 .carousel {
     width: 100%;
     overflow: hidden;
     position: relative;
     border-radius: 20px;
     height: 300px;
-    margin-left: 0;
     cursor: pointer;
 }
-.carousel::before,
-.carousel::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    width: 50%;
-    height: 100%;
-    cursor: pointer;
-    z-index: 1;
-}
 
-.carousel::before {
-    left: 0;
-}
-
-.carousel::after {
-    right: 0;
-}
 .carousel img {
     width: 100%;
     height: 100%;
@@ -128,14 +74,12 @@ header::after {
 
 .carousel img.active {
     display: block;
-    opacity: 1;
 }
 
 .carousel img:hover {
     transform: scale(1.1);
 }
 
-/* Точки карусели */
 .carousel-dots {
     display: flex;
     justify-content: center;
@@ -156,55 +100,17 @@ header::after {
     background-color: #ff69b4;
 }
 
-/* Текст в карусели */
-.carousel-text {
-    text-align: left;
-    margin-top: 20px;
-    width: 100%;
-}
-
-.carousel-text p {
-    margin: 5px 0;
-}
-.carousel-text p:last-of-type {
-    margin-top: 20px; 
-}
-.carousel-text a {
-    color: #e31e1e;
-
-}
-
+/* Кнопки */
 button {
     padding: 10px 20px;
     font-size: 16px;
-    cursor: pointer;
     background-color: #ff69b4;
     color: white;
     border: none;
     border-radius: 5px;
-    margin-top: 10px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-button:hover {
-    background-color: #d14791;
-}
-
-
-
-button {
-    padding: 10px 20px;
-    font-size: 20px;
     cursor: pointer;
-    background-color: #ff69b4;
-    color: white;
-    border: none;
-    border-radius: 5px;
+    transition: background-color 0.3s;
     margin-top: 10px;
-    transition: background-color 0.3s, color 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 button:hover {
@@ -213,62 +119,37 @@ button:hover {
 
 button img {
     width: 24px;
-    height: 24px; 
+    height: 24px;
     transition: transform 0.3s ease;
 }
 
-
-.dark-mode button img {
-    transform: rotate(180deg); 
-}
-
 .text-section {
-    width: 100%; 
+    width: 100%;
     max-width: 1000px;
-    margin: 0 auto; /
+    margin: 0 auto;
+    line-height: 1.8; 
 }
 
-/* Блок с дополнительным текстом и гифкой */
 .info-block {
     display: flex;
-    align-items: center;
+    justify-content: space-between; /* Обеспечивает равномерное распределение элементов */
+    align-items: center; 
     border: 2px solid #ff69b4;
     padding: 20px;
     border-radius: 10px;
-    margin-top: 30px;
+    margin-top: 10px;
     width: 100%;
     max-width: 1040px;
     margin-left: auto;
     margin-right: 0;
 }
-.info-block::before,
-.info-block::after {
-    content: "";
-    position: absolute;
-    width: 35%; /* Размер иконки */
-    height: 50px; /* Размер иконки */
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.info-block::before {
-    top: 69%;
-    left: 150px; /* Расстояние от левого края */
-    transform: translateY(-50%);
-    background-image: url('images/dress.ico'); 
-}
-
-.info-block::after {
-    top: 95%;
-    right: -250px; /* Расстояние от правого края */
-    transform: translateY(-50%);
-    background-image: url('images/crystal.ico'); 
-}
 
 .info-text {
-    flex: 1;
-    padding-right: 20px;
+    flex: 1; 
+    padding-right: 20px; 
+    line-height: 1.6; 
+    text-align: justify; 
+    margin-top: 0;
 }
 
 .info-gif {
@@ -279,7 +160,6 @@ button img {
     border-radius: 10px;
 }
 
-
 /* Для цитаты */
 blockquote {
     font-family: Didot, serif;
@@ -288,28 +168,42 @@ blockquote {
     color: #ffffff;
     border-left: 5px solid #ff69b4;
     padding-left: 15px;
-    margin-bottom: 20px;
-    text-align: left; 
-    margin-left: 0; 
-    margin-right: 0; 
-}
-/* Адаптивность */
-@media (max-width: 768px) {
-    body {
-        font-size: 14px;
-    }
-    .container {
-        flex-direction: column;
-        align-items: center;
-    }
-    .text-section {
-        padding-left: 0;
-        text-align: left; 
-    }
+    margin: 10px 0; 
+    text-align: left;
 }
 
-@media (min-width: 1024px) {
-    body {
-        font-size: 18px;
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .carousel-container, .carousel-text {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .info-block {
+        flex-direction: column;
+        align-items: center;
+        max-width: 100%;
+    }
+
+    .info-text {
+        padding-right: 0;
+        text-align: center;
+    }
+
+    .info-gif {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .info-block::before,
+    .info-block::after {
+        width: 20%;
+        height: 30px;
+        top: 50%;
+        transform: translateY(-50%);
     }
 }
